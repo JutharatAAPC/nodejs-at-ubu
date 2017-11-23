@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 
 // SET ENV
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';  //development
 
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
@@ -52,7 +52,7 @@ function createAddWindow(){
 // Catch item:add
 ipcMain.on('item:add', function(e, item){
   mainWindow.webContents.send('item:add', item);
-  addWindow.close(); 
+  addWindow.close();
   // Still have a reference to addWindow in memory. Need to reclaim memory (Grabage collection)
   //addWindow = null;
 });
