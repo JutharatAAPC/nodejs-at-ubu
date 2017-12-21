@@ -1,0 +1,30 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">ข้อมูลส่วนตัว</h4>
+  <div class="card-block">
+    <form #accountForm="ngForm" (ngSubmit)="save(user)">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="ชื่อผู้ใช้งาน" required>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="อีเมลล์" required>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-black-tie"></i></span>
+        <select class="form-control" name="role" [(ngModel)]="user.role">
+          <option value="" disabled>สถานะ</option>
+          <option value="user">ผู้ใช้งาน</option>
+          <option value="admin">ผู้ดูเเลระบบ</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!accountForm.form.valid">
+        <i class="fa fa-save"></i> เเก้ไข
+      </button>
+    </form>
+  </div>
+</div>
